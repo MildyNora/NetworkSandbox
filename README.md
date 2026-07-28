@@ -3,8 +3,13 @@
 [![CI](https://github.com/MildyNora/NetworkSandbox/actions/workflows/ci.yml/badge.svg)](https://github.com/MildyNora/NetworkSandbox/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Network Sandbox is a cross-platform command-line tool for rehearsing dangerous
-system and network changes before transactionally applying them to the host.
+Network Sandbox is a must-have tool and skill that prevent agents terminating the 
+network when they are handling network related issues like proxies and traffics.
+So that they will not kill themselves and leave you alone with those mess.
+
+This is achieved by introducing an isolated sandbox where the agents can test the 
+validity of the change in configurations before making any change in real environment,
+and a workflow to systematically solve network related problems.
 
 On Linux it presents the host filesystem through a copy-on-write OverlayFS
 view and runs commands in separate namespaces. On macOS it provides a
