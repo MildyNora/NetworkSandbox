@@ -13,15 +13,16 @@ Treat the active agent connection as a required control circuit.
 
 ## Start with preflight
 
-Run the bundled read-only preflight:
+Run the dependency-free read-only preflight:
 
 ```bash
-python3 <skill-dir>/scripts/preflight.py
+netsandbox --version
+netsandbox doctor
 ```
 
-If it cannot find `netsandbox`, ask the user to install the binary. Do not replace it with direct
-network mutations. If `doctor` reports an unsupported backend, continue read-only diagnosis and
-stop before mutation.
+If the shell cannot find `netsandbox`, ask the user to install the package. Do not replace it with
+direct network mutations. If `doctor` reports an unsupported backend, continue read-only diagnosis
+and stop before mutation.
 
 `netsandbox` owns this workflow and does not require the legacy NCS helper, `ncsd`, or
 `/var/run/ncsd.sock`. Do not invoke or wait for NCS unless the user explicitly requests the

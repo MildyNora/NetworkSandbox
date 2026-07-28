@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.2 — 2026-07-28
+
+- Bundle the Network Sandbox agent skill with every release archive.
+- Add one-command Homebrew installation for both the CLI and skill.
+- Replace the Python preflight dependency with direct CLI checks.
+- Add a concise Anaconda-style quick start and documented check exit codes.
+
 ## 0.6.1 — 2026-07-28
 
 - Refresh required circuits after administrator authorization and before the
