@@ -24,17 +24,20 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release
+        with:
+          targets: x86_64-unknown-linux-musl
+      - run: sudo apt-get update && sudo apt-get install --yes musl-tools
+      - run: cargo build --release --target x86_64-unknown-linux-musl
       - run: docker build --tag netsandbox-e2e tests/e2e
       - run: >-
           docker run --rm --privileged
-          --volume "$PWD/target/release/netsandbox:/opt/netsandbox:ro"
+          --volume "$PWD/target/x86_64-unknown-linux-musl/release/netsandbox:/opt/netsandbox:ro"
           netsandbox-e2e
           /usr/local/bin/linux-host-scenario
       - uses: actions/upload-artifact@v4
         with:
           name: netsandbox-linux-guest-amd64
-          path: target/release/netsandbox
+          path: target/x86_64-unknown-linux-musl/release/netsandbox
 
   macos-test:
     needs: linux-e2e
