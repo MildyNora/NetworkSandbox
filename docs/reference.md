@@ -107,9 +107,8 @@ Linux container image. Docker supplies a persistent copy-on-write layer and a
 private Linux network stack. The source image and Mac host are never mounted
 writable.
 
-Official macOS release builds embed their matching Linux helper in the main
-executable. For a development build without an embedded helper, place both
-binaries beside one another:
+The optional legacy Linux-image backend requires a matching Linux helper beside
+the main executable:
 
 ```text
 /usr/local/bin/netsandbox

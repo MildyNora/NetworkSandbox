@@ -121,8 +121,8 @@ netsandbox mac linux-diff NAME
 netsandbox mac linux-commit NAME OUTPUT_IMAGE --yes
 ```
 
-Official macOS releases embed the Linux helper. Development builds can discover
-`netsandbox-linux-guest` beside `netsandbox`. Override either only when necessary with
+The optional legacy Linux-image backend requires a compatible
+`netsandbox-linux-guest` beside `netsandbox`. Override discovery only when necessary with
 `NETSANDBOX_LINUX_GUEST_BIN` or `--guest-binary PATH`.
 
 Track files before mutation. Tracking an already changed path is rejected. `linux-diff` shows the

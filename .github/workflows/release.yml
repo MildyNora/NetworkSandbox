@@ -19,9 +19,10 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install --yes musl-tools
       - run: cargo build --release --locked --target x86_64-unknown-linux-musl
       - run: |
-          mkdir -p dist
+          mkdir -p dist/skills
           install -m 755 target/x86_64-unknown-linux-musl/release/netsandbox dist/netsandbox
-          tar -czf netsandbox-linux-x86_64.tar.gz -C dist netsandbox
+          cp -R skills/network-sandbox dist/skills/network-sandbox
+          tar -czf netsandbox-linux-x86_64.tar.gz -C dist netsandbox skills/network-sandbox
           shasum -a 256 netsandbox-linux-x86_64.tar.gz > netsandbox-linux-x86_64.tar.gz.sha256
       - uses: actions/upload-artifact@v7
         with:
@@ -39,9 +40,10 @@ jobs:
           targets: aarch64-apple-darwin
       - run: cargo build --release --locked --target aarch64-apple-darwin
       - run: |
-          mkdir -p dist
+          mkdir -p dist/skills
           install -m 755 target/aarch64-apple-darwin/release/netsandbox dist/netsandbox
-          tar -czf netsandbox-macos-arm64.tar.gz -C dist netsandbox
+          cp -R skills/network-sandbox dist/skills/network-sandbox
+          tar -czf netsandbox-macos-arm64.tar.gz -C dist netsandbox skills/network-sandbox
           shasum -a 256 netsandbox-macos-arm64.tar.gz > netsandbox-macos-arm64.tar.gz.sha256
       - uses: actions/upload-artifact@v7
         with:
