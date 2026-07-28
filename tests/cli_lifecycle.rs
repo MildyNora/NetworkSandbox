@@ -106,6 +106,12 @@ fn creates_lists_diffs_applies_and_rolls_back() {
 
 #[test]
 fn real_apply_refreshes_stale_required_circuits_before_planning() {
+    #[cfg(target_os = "linux")]
+    if !nix::unistd::Uid::effective().is_root() {
+        eprintln!("skipping privileged Linux apply test for an unprivileged test runner");
+        return;
+    }
+
     let state = tempdir().unwrap();
     let base = tempdir().unwrap();
     let target = base.path().join("proxy.conf");
