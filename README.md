@@ -1,25 +1,28 @@
 # Network Sandbox
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+[![Release](https://img.shields.io/github/v/release/MildyNora/NetworkSandbox?display_name=tag)](https://github.com/MildyNora/NetworkSandbox/releases/latest)
 [![CI](https://github.com/MildyNora/NetworkSandbox/actions/workflows/ci.yml/badge.svg)](https://github.com/MildyNora/NetworkSandbox/actions/workflows/ci.yml)
+[![Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Linux-5865F2.svg)](#install)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Network Sandbox is a must-have tool and skill that prevents agents from
-terminating their own network access while handling proxies, routes,
-credentials, and traffic—so they cannot kill their connection and leave you
-alone with the mess.
+**A lightweight safety backbone for agents making connectivity changes.**
 
-It gives agents an isolated place to validate configuration changes before
-transactionally applying them to the real environment. It is lightweight than docker or VM.
-Once you install it, you wouldn't need to consider about the network issues, it will be spawned once needed.
+Network Sandbox helps agents avoid cutting off their own access while changing
+proxies, routes, credentials, and other network-critical configuration. It gives
+them an isolated place to rehearse changes, verify required connections, and
+apply only validated differences with rollback protection.
 
-
+The native CLI and agent skill are installed together. Once installed, the
+skill tells compatible agents when and how to use the sandbox, so you do not
+have to manage every safety step yourself.
 
 ## Install
 
 ```bash
 brew install MildyNora/tap/network-sandbox
 ```
-This install the main application and the tools which are all you need.
 
 Without Homebrew:
 
@@ -27,9 +30,9 @@ Without Homebrew:
 curl -fsSL https://github.com/MildyNora/NetworkSandbox/releases/latest/download/install.sh | sh
 ```
 
-This installs both the `netsandbox` CLI and its agent skill. The skill is linked
-into the standard Codex, Claude Code and agent skill directories, so agents automatically
-follow the protected connectivity workflow.
+Both methods install the `netsandbox` CLI and its agent skill. The skill is
+linked into the standard Codex and agent skill directories, so compatible
+agents automatically follow the protected connectivity workflow.
 
 No source build, Rust toolchain, Docker, or virtual machine is required.
 
@@ -53,10 +56,10 @@ sudo netsandbox apply proxy-change --yes
 
 ## How it works
 
-Think of Network Sandbox as Anaconda environments for risky connectivity
-changes. An agent creates a named environment, rehearses its commands there,
-checks the required connections, reviews the plan, and only then applies the
-validated difference.
+Think of Network Sandbox as an Anaconda-style environment for risky
+connectivity changes. An agent creates a named environment, rehearses its
+commands there, checks the required connections, reviews the plan, and only
+then applies the validated difference.
 
 The real host stays unchanged until `apply`. `check` names every failed or
 unverifiable connection and exits with `0` when required circuits are preserved,
@@ -68,9 +71,9 @@ Technical and safety details are available in the
 
 ## About
 
-This project is still under an early stage, and continuously adding features and supports, if you have any problem, plz issue it.
-PRs are welcomed.
+Network Sandbox is an early-stage project under active development. Issues,
+feedback, and pull requests are welcome.
 
-## Liscence
+## License
 
-This project is under [License: Apache-2.0]
+Licensed under the [Apache License 2.0](LICENSE).
