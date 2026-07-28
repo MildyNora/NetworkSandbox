@@ -35,11 +35,6 @@ Direct packages: [macOS — Apple silicon](https://github.com/MildyNora/NetworkS
 
 ## Quick start
 
-Think of Network Sandbox as Anaconda environments for risky connectivity
-changes. An agent creates a named environment, rehearses its commands there,
-checks the required connections, reviews the plan, and only then applies the
-validated difference:
-
 ```text
 create → exec → check → plan → apply
 ```
@@ -51,6 +46,13 @@ netsandbox check proxy-change
 netsandbox plan proxy-change
 sudo netsandbox apply proxy-change --yes
 ```
+
+## How it works
+
+Think of Network Sandbox as Anaconda environments for risky connectivity
+changes. An agent creates a named environment, rehearses its commands there,
+checks the required connections, reviews the plan, and only then applies the
+validated difference.
 
 The real host stays unchanged until `apply`. `check` names every failed or
 unverifiable connection and exits with `0` when required circuits are preserved,
