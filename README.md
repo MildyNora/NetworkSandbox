@@ -17,6 +17,12 @@ transactionally applying them to the real environment.
 brew install MildyNora/tap/network-sandbox
 ```
 
+Without Homebrew:
+
+```bash
+curl -fsSL https://github.com/MildyNora/NetworkSandbox/releases/latest/download/install.sh | sh
+```
+
 This installs both the `netsandbox` CLI and its agent skill. The skill is linked
 into the standard Codex and agent skill directories, so agents automatically
 follow the protected connectivity workflow.

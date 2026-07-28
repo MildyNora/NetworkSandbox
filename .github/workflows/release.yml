@@ -58,17 +58,20 @@ jobs:
       - macos
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v7
       - uses: actions/download-artifact@v8
         with:
           pattern: release-*
           path: release
           merge-multiple: true
       - run: |
+          cp install.sh release/install.sh
           cd release
           cat *.sha256 > SHA256SUMS
           gh release create "$GITHUB_REF_NAME" \
             netsandbox-linux-x86_64.tar.gz \
             netsandbox-macos-arm64.tar.gz \
+            install.sh \
             SHA256SUMS \
             --repo "$GITHUB_REPOSITORY" \
             --generate-notes \
