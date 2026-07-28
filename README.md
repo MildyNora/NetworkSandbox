@@ -9,13 +9,17 @@ credentials, and traffic—so they cannot kill their connection and leave you
 alone with the mess.
 
 It gives agents an isolated place to validate configuration changes before
-transactionally applying them to the real environment.
+transactionally applying them to the real environment. It is lightweight than docker or VM.
+Once you install it, you wouldn't need to consider about the network issues, it will be spawned once needed.
+
+
 
 ## Install
 
 ```bash
 brew install MildyNora/tap/network-sandbox
 ```
+This install the main application and the tools which are all you need.
 
 Without Homebrew:
 
@@ -24,7 +28,7 @@ curl -fsSL https://github.com/MildyNora/NetworkSandbox/releases/latest/download/
 ```
 
 This installs both the `netsandbox` CLI and its agent skill. The skill is linked
-into the standard Codex and agent skill directories, so agents automatically
+into the standard Codex, Claude Code and agent skill directories, so agents automatically
 follow the protected connectivity workflow.
 
 No source build, Rust toolchain, Docker, or virtual machine is required.
@@ -61,3 +65,12 @@ error. Post-apply validation automatically rolls back a failed change.
 
 Technical and safety details are available in the
 [reference documentation](docs/reference.md).
+
+## About
+
+This project is still under an early stage, and continuously adding features and supports, if you have any problem, plz issue it.
+PRs are welcomed.
+
+## Liscence
+
+This project is under [License: Apache-2.0]
