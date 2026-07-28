@@ -1,0 +1,48 @@
+[package]
+name = "netsandbox"
+version = "0.6.1"
+edition = "2024"
+rust-version = "1.85"
+build = "build.rs"
+license = "Apache-2.0"
+description = "Safely rehearse and transactionally apply system and network changes"
+repository = "https://github.com/MildyNora/NetworkSandbox"
+homepage = "https://github.com/MildyNora/NetworkSandbox"
+documentation = "https://github.com/MildyNora/NetworkSandbox/blob/main/docs/architecture.md"
+keywords = ["sandbox", "networking", "rollback", "cli", "devops"]
+categories = ["command-line-utilities", "development-tools"]
+
+[lib]
+name = "netsandbox"
+path = "src/lib.rs"
+
+[[bin]]
+name = "netsandbox"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+directories = "6.0"
+fs2 = "0.4"
+hex = "0.4"
+nix = { version = "0.30", features = ["fs", "mount", "process", "user"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+similar = "2.7"
+socket2 = { version = "0.6", features = ["all"] }
+uuid = { version = "1.17", features = ["v4", "serde"] }
+walkdir = "2.5"
+xattr = "1.6"
+
+[dev-dependencies]
+assert_cmd = "2.0"
+predicates = "3.1"
+tempfile = "3.20"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true

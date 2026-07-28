@@ -1,0 +1,4 @@
+interface:
+  display_name: "Network Sandbox"
+  short_description: "Safely test connectivity and network changes"
+  default_prompt: "Use $network-sandbox to diagnose this connectivity issue without risking the active connection."
