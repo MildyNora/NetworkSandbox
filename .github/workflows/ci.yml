@@ -34,7 +34,7 @@ jobs:
           --volume "$PWD/target/x86_64-unknown-linux-musl/release/netsandbox:/opt/netsandbox:ro"
           netsandbox-e2e
           /usr/local/bin/linux-host-scenario
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: netsandbox-linux-guest-amd64
           path: target/x86_64-unknown-linux-musl/release/netsandbox
@@ -47,7 +47,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy,rustfmt
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: netsandbox-linux-guest-amd64
           path: artifacts
